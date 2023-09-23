@@ -1,14 +1,14 @@
 # Segmentación de granos de arroz utilizando clustering
 
-En este markdown se detallan los pasos seguidos para la segmentación de granos de arroz en imágenes.
+Este reposoitorio posee un entorno de Python y un Jupyter Notebook que, trabajando con datos generados por Koklu, M. *et al* (2021) [[1]](#1)[[2]](#2)[[3]](#3)[[4]](#4), desarrolla distintos pasos para la segmentación de granos de arroz en imágenes, utilizando redes neuronales convolucionales para la generación de features y métodos de clustering para la deteccion de los distintos tipos de granos de arroz.  
 
-## Armado de entorno
-* Descarga de datos
-* Armado de estructura de directorio
-* Instalación de entorno virtual y creación de requirements.txt
-* Creación de repositorio Git y creación de repositorio remoto, autorización de colaboradores. 
+El arroz, que se encuentra entre los cereales más producidos en todo el mundo, tiene muchas variedades genéticas. Estas variedades se diferencian entre sí por algunas de sus características. Suelen ser características como la textura, la forma y el color. Con estas características que distinguen a las variedades de arroz, es posible clasificar y evaluar la calidad de las semillas. En este estudio se utilizaron Arborio, Basmati, Ipsala, Jasmine y Karacadag, que son cinco variedades diferentes de arroz que a menudo se cultivan en Turquía. En el conjunto de datos se incluyen un total de 75.000 imágenes de granos, 15.000 de cada una de estas variedades.
 
-```
+## Armado de entorno de trabajo
+
+### Clonar repositorio e instalar librerías
+
+```python
 git clone https://github.com/Ignacio-Ibarra/unsupervised-rice-image-segmentation.git
 
 cd unsupervised-rice-image-segmentation
@@ -20,6 +20,30 @@ source venv_name/bin/activate
 pip install --upgrade pip
 
 pip install -r requirements.txt
+```
+
+### Descarga de datos y creación de estructura del directorio
+Descargar imágenes de granos de arroz de [aquí](https://www.muratkoklu.com/datasets/vtdhnd09.php). Descomprimir el archivo `*.zip` en una carpeta `input`, creando un directorio que posea la siguiente estructura: 
+
+```
+unsupervised-rice-image-segmentation
+├── input
+│   ├── Arborio # Especie de arroz
+│   │   ├── Arborio (1).png
+│   │   ├── Arborio (2).png
+│   │   ├── Arborio (3).png
+|   |   ...
+│   │   └── Arborio (15000).png
+│   └── Basmati
+│   │   ├── Basmati (1).png
+│   │   ├── Basmati (2).png
+│   │   ├── Basmati (3).png
+|   |   ...
+│   │   └── Basmati (15000).png
+|   ...
+├── notebook.ipynb
+└── requirements.txt
+
 ```
 
 ## Preparación de los datos
@@ -53,3 +77,17 @@ Se propone detectar un objeto dentro de una imágen siguiendo los siguientes pas
 * Aplicar los algoritmos de *Connected-component labelling* y *clustering espectral* sobre
 los pixels.
 * Describir el proceso y comparar los resultados obtenidos.
+
+## Referencias
+<a id="1">[1]</a> 
+Koklu, M., Cinar, I., & Taspinar, Y. S. (2021). Classification of rice varieties with deep learning methods. Computers and Electronics in Agriculture, 187, 106285. https://doi.org/10.1016/j.compag.2021.106285
+
+<a id="2">[2]</a> 
+Cinar, I., & Koklu, M. (2021). Determination of Effective and Specific Physical Features of Rice Varieties by Computer Vision In Exterior Quality Inspection. Selcuk Journal of Agriculture and Food Sciences, 35(3), 229-243. https://doi.org/10.15316/SJAFS.2021.252
+
+<a id="3">[3]</a> 
+Cinar, I., & Koklu, M. (2022). Identification of Rice Varieties Using Machine Learning Algorithms. Journal of Agricultural Sciences https://doi.org/10.15832/ankutbd.862482
+
+<a id="4">[4]</a> 
+Cinar, I., & Koklu, M. (2019). Classification of Rice Varieties Using Artificial Intelligence Methods. International Journal of Intelligent Systems and Applications in Engineering, 7(3), 188-194. https://doi.org/10.18201/ijisae.2019355381
+
