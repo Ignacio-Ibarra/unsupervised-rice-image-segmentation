@@ -1,12 +1,26 @@
 # Segmentación de granos de arroz utilizando clustering
 
-En este markdown se detallan los pasos seguidos para 
+En este markdown se detallan los pasos seguidos para la segmentación de granos de arroz en imágenes.
 
 ## Armado de entorno
 * Descarga de datos
 * Armado de estructura de directorio
 * Instalación de entorno virtual y creación de requirements.txt
 * Creación de repositorio Git y creación de repositorio remoto, autorización de colaboradores. 
+
+```
+git clone https://github.com/Ignacio-Ibarra/unsupervised-rice-image-segmentation.git
+
+cd unsupervised-rice-image-segmentation
+
+python3 -m venv <venv_name>
+
+source venv_name/bin/activate
+
+pip install --upgrade pip
+
+pip install -r requirements.txt
+```
 
 ## Preparación de los datos
 * Levantar las imágenes y sus etiquetas. 
