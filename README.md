@@ -43,7 +43,6 @@ unsupervised-rice-image-segmentation
 |   ...
 ├── notebook.ipynb
 └── requirements.txt
-
 ```
 
 ## Preparación de los datos
