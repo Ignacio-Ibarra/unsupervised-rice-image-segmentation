@@ -1,0 +1,9 @@
+input/
+*.csv
+*.png
+.venv/
+functions/__pycache__
+.ipynb_checkpoints/
+output/
+latex/
+__pycache__/
