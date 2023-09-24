@@ -45,18 +45,20 @@ unsupervised-rice-image-segmentation
 └── requirements.txt
 ```
 
-## Preparación de los datos
+## Preparación de los datos (Notebook 1) - Nacho
 * Levantar las imágenes y sus etiquetas. 
 * Documentar las propiedades del dataset a utilizar. 
 * Describir sus atributos, de forma semejante a lo realizado en el pre-informe. 
 * Verificar que las imágenes sean comparables en color, valor, rango y tamaño.
 
-## Generación de dataset de trabajo
-* Extracción de features utilizando `VGG16`, quedándose con la anteúltima capa fully-connected
-* Reducción de dimensionalidad con PCA. 
-* Guardado de dataset en Drive. 
+## Generación de dataset de trabajo (Notebook 2 en Google Colab)
+* Extracción de features utilizando `VGG16`, quedándose con la anteúltima capa fully-connected. Guardar salida
 
-## Clustering
+## Reducción de dimensionalidad (va como paso en la notebook propia )
+* Reducción de dimensionalidad con PCA. (Esto lo podemos hacer todos)
+* Guardado de dataset en Drive y compartirlo. 
+
+## Clustering: kmeans++ (Martín), hclust (Juan), kmedoids (Nacho) (un notebook por cada uno)
 * Aplicar KMeans sobre el conjuntos de datos (con distintas métricas, normalizaciones,
 combinaciones, etc). Determinar la cantidad de clusters utilizando silhuette y SSE.
 * Evaluar si el agrupamiento para el k óptimo se condice que las etiquetas de las imágenes
@@ -66,10 +68,12 @@ correspondan.
 de reducción (PCA, TSNE, MDS, etc).
 * Analizar los resultados obtenidos.
 * Repetir los pasos para al menos otros dos algoritmos de clustering. En el paso $a)$ considerar
-los hiper-parámetros y la métrica de validación interna que corresponda. Comparar y
-discutir brevemente los resultados obtenidos.
+los hiper-parámetros y la métrica de validación interna que corresponda. 
 
-## Detección de objetos dentro de una imagen
+## Comparar (Notebook 4), input: para cada método tengo que tener label y cluster por cada imagen. 
+* Comparar y discutir brevemente los resultados obtenidos.
+
+## Detección de objetos dentro de una imagen [TODAVIA NO REPARTIMOS]
 Se propone detectar un objeto dentro de una imágen siguiendo los siguientes pasos.
 * Seleccionar una sóla imagen.
 * Convertir la imagen a binaria.
