@@ -19,7 +19,7 @@ source venv_name/bin/activate
 
 pip install --upgrade pip
 
-pip install pandas matplotlib seaborn colour opencv-python ipykernel clustimage tensorflow
+pip install -r requirements.txt
 ```
 
 ### Descarga de datos y creación de estructura del directorio
