@@ -7,3 +7,6 @@ clustimage==1.5.20
 opencv-python==4.8.0.76
 ipykernel==6.25.2
 colour==0.1.5
+scikit-fuzzy==0.4.2
+numba==0.58.0
+umap-learn==0.5.4
