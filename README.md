@@ -19,7 +19,7 @@ source venv_name/bin/activate
 
 pip install --upgrade pip
 
-pip install pandas matplotlib seaborn colour opencv-python ipykernel clustimage tensorflow
+pip install -r requirements.txt
 ```
 
 ### Descarga de datos y creación de estructura del directorio
@@ -94,3 +94,4 @@ Cinar, I., & Koklu, M. (2022). Identification of Rice Varieties Using Machine Le
 <a id="4">[4]</a> 
 Cinar, I., & Koklu, M. (2019). Classification of Rice Varieties Using Artificial Intelligence Methods. International Journal of Intelligent Systems and Applications in Engineering, 7(3), 188-194. https://doi.org/10.18201/ijisae.2019355381
 
+A. Banerjee and R. N. Dave, "Validating clusters using the Hopkins statistic," 2004 IEEE International Conference on Fuzzy Systems (IEEE Cat. No.04CH37542), Budapest, Hungary, 2004, pp. 149-153 vol.1, doi: 10.1109/FUZZY.2004.1375706.
