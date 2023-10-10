@@ -1,0 +1,123 @@
+\documentclass{article}
+
+% if you need to pass options to natbib, use, e.g.:
+%     \PassOptionsToPackage{numbers, compress}{natbib}
+% before loading neurips_2023
+
+
+% ready for submission
+%\usepackage{neurips_2023}
+
+
+% to compile a preprint version, e.g., for submission to arXiv, add add the
+% [preprint] option:
+%\usepackage[preprint]{neurips_2023}
+
+
+% to compile a camera-ready version, add the [final] option, e.g.:
+\usepackage[final]{neurips_2023}
+
+
+% to avoid loading the natbib package, add option nonatbib:
+%    \usepackage[nonatbib]{neurips_2023}
+
+
+\usepackage[utf8]{inputenc} 	% allow utf-8 input
+\usepackage[T1]{fontenc}        	% use 8-bit T1 fonts
+\usepackage{hyperref}               	% hyperlinks
+\usepackage{url}                        	% simple URL typesetting
+\usepackage{booktabs}              	% professional-quality tables
+\usepackage{amsfonts}              	% blackboard math symbols
+\usepackage{nicefrac}                	% compact symbols for 1/2, etc.
+\usepackage{microtype}            	% microtypography
+\usepackage{xcolor}                  	% colors
+\usepackage{graphicx}
+\graphicspath{ {C:/Users/jfgonzalez/Documents/Documentación_maestría/Ciencia_y_tecnologia/} }
+
+
+\title{TP1: Separación de granos de arroz}
+\author{\textbf{Juan Francisco González Valle López} \\ Datamining en Ciencia y Tecnología\\\texttt{juanvallevt@gmail.com}}
+
+
+\begin{document}
+
+
+\maketitle
+
+\begin{abstract}
+Resumen (máx. 200 palabras), tiene que contener una descripción de todo el trabajo:
+Motivación, Antecedentes, Objetivos, Métodos, Resultados y alguna Conclusión..
+\end{abstract}
+
+\section{Introducción}
+Introducción Comienza con la motivación, sigue con los antecedentes, y termina siempre con un párrafo de objetivos (no es necesario que este dividido en sub-secciones).
+Típicamente, una vez que motivaron el trabajo y mostraron lo que hay hecho, viene una frase del estilo “Por ende, nos proponemos...” o “Aquí nos proponemos...”.
+
+\section{Métodos generales (si los hubiese)} 
+Detalle de los métodos a utilizar, en este caso no es necesario profundizar mucho pero pueden enumerarlos y sobre todo es el lugar para incluir cualquier método fuera de lo común que hayan utilizado.
+
+\begin{figure}[!hb]
+  \centering
+   \fbox{\rule[-.5cm]{0cm}{0cm}  
+		\includegraphics[width=.50 \textwidth]{arroces001.png}}
+  \caption{Arroces estudiados}
+\end{figure}
+
+Para la tarea de clusterización no supervisada llevada a cabo en este estudio, se empleó el método de transfer learning utilizando un modelo previamente entrenado. Se optó por la arquitectura de red VGG16 debido a su eficacia comprobada en la extracción de características de imágenes. Se utilizó un conjunto de 15.000 fotografías correspondientes a cinco variedades de arroz, y la estructura de la red VGG16, junto con el modelo VGG16 entrenado previamente, se emplearon como base para obtener un conjunto de características discriminativas que facilitan el proceso de agrupamiento. Este enfoque se alinea con las metodologías utilizadas en trabajos previos, como el presentado por Deepak y Ameer (2019), donde se destacó la utilidad del transfer learning y de la arquitectura VGG16 en tareas similares.
+
+Tras obtener el conjunto de características utilizando la arquitectura VGG16, se procedió a realizar una reducción de dimensionalidad con el objetivo de simplificar la estructura del dataset y acelerar los cálculos subsecuentes. Para ello, se aplicó el método de Análisis de Componentes Principales (PCA, por sus siglas en inglés) reduciendo el espacio de características a 100 componentes. Esta reducción permitió condensar la información relevante conservando la mayoría de la varianza explicativa original, proporcionando así un conjunto de datos más manejable y menos redundante para los siguientes pasos del proceso.
+
+Con este nuevo conjunto de datos de menor dimensión, se procedió a la etapa de clusterización no supervisada. 
+
+-Detección de objetos dentro de una imagen 
+
+\section{Experiencia 1, kmeans++}
+-Métodos específicos
+-Resultados y discusión
+
+\section{Experiencia 2, genie clust, hierachical clustering}
+Realizamos dos experiencias con cluster jerárquico. La primera plicando el clustering jerárquico aglomerativo implementado en scikit-learn en los 
+
+-Métodos específicos
+-Resultados y discusión
+
+\section{Experiencia 3, UMAP + kmeans}
+-Métodos específicos
+-Resultados y discusión
+
+\section{Experiencia 3, kmedoids}
+-Métodos específicos
+-Resultados y discusión
+
+
+\section{Conclusiones}
+Comienza generalmente con un resumen muy breve de los principales resultados obtenidos (uniendo distintas secciones), y luego se pasa a conclusiones generales, detallando problemas detectados, posibles explicaciones y trabajo a futuro.
+
+\section{Referencias}
+Citas bibliográficas utilizadas durante el reporte. Si son sitios web o repositorios se incluyen generalmente al pie de la página que corresponde y no como cita bibliográfica.
+
+
+
+\begin{figure}[!hb]
+  \centering
+   \fbox{\rule[-.5cm]{0cm}{0cm}  
+		\includegraphics[width=.50 \textwidth]{mas_menos_brillo.png}
+		\includegraphics[width=.50 \textwidth]{filtros.png}}
+  \caption{Variando el brillo y aplicando filtros}
+\end{figure}
+
+
+\begin{figure}[!hb]
+  \centering
+   \fbox{\rule[-.5cm]{0cm}{0cm}  
+	\includegraphics[width=.50 \textwidth]{imagen_promedio.png}}
+  \caption{Promedio global}
+\end{figure}
+
+
+
+\section{Conclusiones}
+
+
+\end{document}
+
