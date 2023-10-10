@@ -13,12 +13,16 @@ from sklearn.decomposition import PCA
 import sklearn as sk
 from sklearn import metrics
 
+from scipy.cluster.hierarchy import dendrogram
+from sklearn.cluster import AgglomerativeClustering
+
 import umap
 import umap.plot
 
 #import gower # calcula matriz de distancias gower
-#import fastcluster # mejora la performance del cluster jerárquico
+import fastcluster # mejora la performance del cluster jerárquico
 
+# para gridsearch
 # https://genieclust.gagolewski.com/
 # https://doi.org/10.1016/j.softx.2021.100722
 import genieclust
@@ -28,18 +32,8 @@ import numpy as np
 import matplotlib as mpl
 import matplotlib.pyplot as plt
 import pandas as pd
-#import os
-#from random import randint
-#import pickle
-#import seaborn as sns
-#import time
-import random
-
-from clusteval import clusteval
 
 
-from scipy.cluster.hierarchy import dendrogram
-from sklearn.cluster import AgglomerativeClustering
 
 # trabajo con zip
 #from zipfile import ZipFile
@@ -125,6 +119,9 @@ def paso_a_pca(features, guardo=False, archivo_guarda=None):
     ax.set_xlabel('PCs')
     ax.set_ylabel('Var. explicada (%)')
     return x
+
+# %%
+
 
 ARCHIVO_PCA = 'C:/Users/jfgonzalez/Documents/Documentación_maestría/Ciencia_y_tecnologia/feat_pca.csv'
 INPUT_P = 'C:/Users/jfgonzalez/Documents/Documentación_maestría/Ciencia_y_tecnologia/unsupervised-rice-image-segmentation/input/'
@@ -295,24 +292,24 @@ def plot_dendrogram(model, **kwargs):
     return linkage_matrix
 
 #%%
-def dendro(hclust, color_threshold=150):
+def dendro(hclust, color_threshold=150  ):
     fig = plt.figure(figsize=(15,4))
     plt.title("Hierarchical Clustering Dendrogram")
     # plot the top three levels of the dendrogram
-    linkage_matrix = plot_dendrogram(hclust, p=4, leaf_rotation=45, truncate_mode="level", color_threshold=color_threshold)
+    linkage_matrix = plot_dendrogram(hclust, p=3, leaf_rotation=45, truncate_mode="level", color_threshold=color_threshold)
     plt.xlabel("Number of points in node (or index of point if no parenthesis).")
     plt.show()
     return linkage_matrix
 
 # %% ward
 
-hclust_pca = AgglomerativeClustering( n_clusters=None, linkage='ward', compute_distances=True, distance_threshold=2500 )
+hclust_pca = git push(n_clusters=None, linkage='ward', compute_distances=True, distance_threshold=2500 )
 hclust_pca.fit(X_train_test)
 label_pca = hclust_pca.fit_predict(X_train_test)
 
-print('AgglomerativeClustering', "n_clusters=None, linkage='ward', compute_distances=True, distance_threshold=1200")
+print('AgglomerativeClustering', "n_clusters=None, linkage='ward', compute_distances=True, distance_threshold=2500")
 print(cross_tab(y_train_test, hclust_pca.labels_))
-mx = dendro(hclust_pca, color_threshold=2500)
+mx_pca = dendro(hclust_pca, color_threshold=2500)
 
 #%%
 
@@ -321,13 +318,29 @@ hclust_umap = AgglomerativeClustering( n_clusters=None, linkage='ward', compute_
 
 label_umap = hclust_umap.fit_predict(Xred)
 
-print('AgglomerativeClustering UMAP', "n_clusters=None, linkage='ward', compute_distances=True, distance_threshold=150")
+print('AgglomerativeClustering UMAP') 
+print('AgglomerativeClustering params:',"n_clusters=None, linkage='ward', compute_distances=True, distance_threshold=350")
+print('UMAP params:', "n_neighbors=20, min_dist=0.0, n_components=2, metric='euclidean")
 print(cross_tab(y_train_test, hclust_umap.labels_))
 
 grafico_evaluacion(X_train_test , y_train_test, hclust_umap.labels_ , nom_test='Agglomerative+UMAP')
-mx = dendro(hclust_umap, color_threshold=350)
+mx_umap = dendro(hclust_umap, color_threshold=350)
 
 #%%
+
+a = dendrogram(mx_pca, p=3, leaf_rotation=45, truncate_mode="level", color_threshold=2500)
+
+b= pd.DataFrame(zip([int(x.strip('()')) for x in a['ivl']], a['leaves_color_list']))
+b.pivot_table(values=0, index=1, aggfunc='sum')
+
+
+
+a = dendrogram(mx_umap, p=3, leaf_rotation=45, truncate_mode="level", color_threshold=350)
+
+b= pd.DataFrame(zip([int(x.strip('()')) for x in a['ivl']], a['leaves_color_list']))
+b.pivot_table(values=0, index=1, aggfunc='sum')
+
+
 
 
 #%%
