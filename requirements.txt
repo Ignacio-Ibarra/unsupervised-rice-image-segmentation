@@ -12,4 +12,5 @@ numba==0.58.0
 umap-learn==0.5.4
 tqdm==4.66.1
 ipywidgets==8.1.1
-scikit-image==0.21.0       
+scikit-image==0.21.0
+scikit-learn-extra==0.3.0       
