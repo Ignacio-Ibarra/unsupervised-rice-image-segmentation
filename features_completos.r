@@ -2,8 +2,8 @@
 # 5 archivos que contienen los 4096 features generados por la red convolucional
 # y un archivo que contiene los 6 features generados por connected 
 # component labelling
-# Devuelve un archivo llamado features_completos.csv.gz que contienen 4102 features
-# y doscolumnas referidas a la clase y el nombre del archivo de la imagen. 
+# Devuelve un 5 archivos, uno por clase, que contienen 4102 features
+# y dos columnas referidas a la clase y el nombre del archivo de la imagen. 
 
 
 #limpio la memoria
@@ -40,6 +40,13 @@ X2 <- fread("./output/datasets/features_morfologicos.csv.gz")
 
 completo <- merge(X1, X2, by="image_id")
 
+clases <- unique(X2$class_name)
 
-fwrite(completo, "./output/datasets/features_completos.csv.gz", row.names = T)
+for (clase in clases){
+  x <- completo[class_name==clase]
+  filename <- sprintf("./output/datasets/features_completos_%s.csv.gz", clase)
+  fwrite(x,filename, row.names = F)
+  cat(clase, "listo\n")
+}
+
 
